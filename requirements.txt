@@ -1,0 +1,8 @@
+streamlit
+torch
+librosa
+soundfile
+scikit-learn
+noisereduce
+numpy
+pandas
