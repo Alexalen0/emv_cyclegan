@@ -3,6 +3,40 @@ import os
 from emotion_converter import AudioEmotionConverter
 
 def main():
+    # Inject custom CSS for a modern look
+    st.markdown("""
+        <style>
+        .main {
+            background: linear-gradient(135deg, #f8fafc 0%, #e0e7ef 100%);
+            color: #22223b;
+        }
+        .stButton > button {
+            background-color: #4f8cff;
+            color: white;
+            border-radius: 8px;
+            padding: 0.5em 2em;
+            font-weight: 600;
+            border: none;
+            transition: background 0.2s;
+        }
+        .stButton > button:hover {
+            background-color: #2563eb;
+        }
+        .stFileUploader, .stSelectbox, .stTextInput, .stAudio {
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+            padding: 1em;
+        }
+        .stAlert {
+            border-radius: 8px;
+        }
+        .stMarkdown h1, .stMarkdown h2, .stMarkdown h3 {
+            color: #2563eb;
+        }
+        </style>
+    """, unsafe_allow_html=True)
+
     st.title("Audio Emotion Converter")
     st.write("Upload an audio file. The model and scaler will be loaded from the server.")
 
