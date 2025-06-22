@@ -17,19 +17,9 @@ def main():
     audio_file = st.file_uploader("Upload Audio File", type=["wav", "mp3", "ogg"])
 
     # Only 'SAD' is enabled, others are disabled and marked as coming soon
-    emotions = [
-        {'label': 'ANG (Coming Soon)', 'value': 'ANG', 'disabled': True},
-        {'label': 'DIS (Coming Soon)', 'value': 'DIS', 'disabled': True},
-        {'label': 'FEA (Coming Soon)', 'value': 'FEA', 'disabled': True},
-        {'label': 'HAP (Coming Soon)', 'value': 'HAP', 'disabled': True},
-        {'label': 'NEU (Coming Soon)', 'value': 'NEU', 'disabled': True},
-        {'label': 'SAD', 'value': 'SAD', 'disabled': False}
-    ]
-    # Streamlit does not support disabling selectbox options directly, so we use a workaround
-    emotion_labels = [e['label'] for e in emotions]
-    default_index = len(emotions) - 1  # SAD is last and enabled
-    selected_label = st.selectbox("Select Target Emotion", emotion_labels, index=default_index, help="Other emotions coming soon!")
-    target_emotion = emotions[emotion_labels.index(selected_label)]['value']
+    emotion_labels = ["SAD"]
+    st.selectbox("Select Target Emotion", emotion_labels, index=0, help="Other emotions coming soon! Only SAD is available.")
+    target_emotion = "SAD"
 
     if st.button("Convert Emotion"):
         if audio_file is not None:
