@@ -7,7 +7,7 @@ def main():
     st.write("Upload an audio file. The model and scaler will be loaded from the server.")
 
     # Hardcoded model and scaler paths (update these as needed)
-    MODEL_PATH = "../G_neu2sad_final.pth"
+    MODEL_PATH = "G_neu2sad_final.pth"
     SCALER_PATH = None  # Set to path if you have a scaler
 
     # Ensure temp directory exists
@@ -16,9 +16,20 @@ def main():
     # File uploader for audio files only
     audio_file = st.file_uploader("Upload Audio File", type=["wav", "mp3", "ogg"])
 
-    # Emotion selection
-    emotions = ['ANG', 'DIS', 'FEA', 'HAP', 'NEU', 'SAD']
-    target_emotion = st.selectbox("Select Target Emotion", emotions)
+    # Only 'SAD' is enabled, others are disabled and marked as coming soon
+    emotions = [
+        {'label': 'ANG (Coming Soon)', 'value': 'ANG', 'disabled': True},
+        {'label': 'DIS (Coming Soon)', 'value': 'DIS', 'disabled': True},
+        {'label': 'FEA (Coming Soon)', 'value': 'FEA', 'disabled': True},
+        {'label': 'HAP (Coming Soon)', 'value': 'HAP', 'disabled': True},
+        {'label': 'NEU (Coming Soon)', 'value': 'NEU', 'disabled': True},
+        {'label': 'SAD', 'value': 'SAD', 'disabled': False}
+    ]
+    # Streamlit does not support disabling selectbox options directly, so we use a workaround
+    emotion_labels = [e['label'] for e in emotions]
+    default_index = len(emotions) - 1  # SAD is last and enabled
+    selected_label = st.selectbox("Select Target Emotion", emotion_labels, index=default_index, help="Other emotions coming soon!")
+    target_emotion = emotions[emotion_labels.index(selected_label)]['value']
 
     if st.button("Convert Emotion"):
         if audio_file is not None:
