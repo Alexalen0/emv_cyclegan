@@ -19,6 +19,7 @@ def main():
     # Only 'SAD' is enabled, others are disabled and marked as coming soon
     emotion_labels = ["SAD"]
     st.selectbox("Select Target Emotion", emotion_labels, index=0, help="Other emotions coming soon! Only SAD is available.")
+    st.info("Other emotions will be added soon!")
     target_emotion = "SAD"
 
     if st.button("Convert Emotion"):
