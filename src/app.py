@@ -7,7 +7,7 @@ def main():
     st.write("Upload an audio file. The model and scaler will be loaded from the server.")
 
     # Hardcoded model and scaler paths (update these as needed)
-    MODEL_PATH = "../G_neu2sad_final.pth"
+    MODEL_PATH = "G_neu2sad_final.pth"
     SCALER_PATH = None  # Set to path if you have a scaler
 
     # Ensure temp directory exists
