@@ -37,6 +37,12 @@ def main():
         </style>
     """, unsafe_allow_html=True)
 
+    # 🔔 Info message at the top
+    st.markdown(
+        "<h4 style='color:#d97706;'>⚠️ Due to resource limitations, the app has been shifted to a Python-based Streamlit version for now.</h4>",
+        unsafe_allow_html=True
+    )
+
     st.title("Audio Emotion Converter")
     st.write("Upload an audio file. The model and scaler will be loaded from the server.")
 
